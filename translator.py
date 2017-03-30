@@ -5,6 +5,8 @@ FUNCTION = 1
 TOKEN = 2
 TRANSLATE = 3
 
+keyWords = ['if', 'while', 'for']
+
 f = open('translator.csv')
 db = f.readlines()
 f.close()
@@ -19,14 +21,15 @@ f.close()
 
 function = ''
 for i in range(0, len(txt)):
-    if txt[i].startswith('//FUNCTION'):
-        i += 1
-        function = txt[i].split(' ')[1]
-        pos = function.find('(')
-        if pos != -1:
-            function = function[0:pos]
+    l = txt[i].strip()
+    if l.strip() == '':
+        continue
+    if l.split(' ')[0] not in keyWords and l[-1] != ';' and l[-1] == ')' or l[-1] == '{':
+        pos1 = l.rfind('(')
+        pos2 = l[0:pos1].rfind(' ') + 1
+        function = l[pos2:pos1]
 
-        print 'Processing function ' + function
+        print 'Processing function *' + function + '*'
         
     for l in db2:
         if l[FILE] == name and (l[FUNCTION] == function or l[FUNCTION] == '*'):
