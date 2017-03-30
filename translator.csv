@@ -1,0 +1,5 @@
+test.c,f1,var1,total
+test.c,main,var1,ammount1
+test.c,main,var2,ammount2
+test.c,main,var3,total
+test.c,*,f1,print_value
