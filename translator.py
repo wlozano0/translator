@@ -52,7 +52,7 @@ for root, dirs, files in os.walk(basePath):
                 print 'Processing function *' + function + '*'
 
             for l in db2:
-                if l[FILE] == fname and (l[FUNCTION] == function or l[FUNCTION] == '*'):
+                if (l[FILE] == fname or l[FILE] == '*') and (l[FUNCTION] == function or l[FUNCTION] == '*'):
                     txt[i] = txt[i].replace(l[TOKEN], l[TRANSLATE])
 
         newRoot = root.replace(basePath, basePath[0:-1] + '2/')
