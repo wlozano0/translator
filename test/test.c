@@ -1,8 +1,5 @@
 #include <stdio.h> 
-
-void f1(var1){
-	printf("Total is: %d\n", var1);
-}
+#include "test.h"
 
 void main(){
 	int var1 = 3;
